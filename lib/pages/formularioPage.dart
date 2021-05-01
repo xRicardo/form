@@ -145,7 +145,6 @@ class _ComboBoxState extends State<ComboBox> {
       children: [
         Row(
           children: [
-            Icon(Icons.select_all),
             Expanded(
               child: DropdownButton(
                 value: _actual,
@@ -197,7 +196,6 @@ class _ComboBoxDState extends State<ComboBoxD> {
       children: [
         Row(
           children: [
-            Icon(Icons.select_all),
             Expanded(
               child: DropdownButton(
                 value: _actual,
@@ -251,7 +249,6 @@ class _ComboBoxYState extends State<ComboBoxY> {
       children: [
         Row(
           children: [
-            Icon(Icons.select_all),
             Expanded(
               child: DropdownButton(
                 value: _actual,
@@ -445,7 +442,6 @@ class _ComboBoxWState extends State<ComboBoxW> {
       children: [
         Row(
           children: [
-            Icon(Icons.select_all),
             Expanded(
               child: DropdownButton(
                 value: _actual,
