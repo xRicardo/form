@@ -5,34 +5,99 @@ import 'header_widget.dart';
 class InputPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: SingleChildScrollView(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              HeaderWidget(title: 'Personal'),
-              CajaName(),
-              ComboBox(),
-              ComboBoxD(),
-              ComboBoxY(),
-              HeaderWidget(title: 'Account'),
-              CajaEmail(),
-              CajaPassword(),
-              CajaVeriPassword(),
-              HeaderWidget(title: 'Contact'),
-              CajaAddress(),
-              CajaCity(),
-              ComboBoxW(),
-              CajaPhone(),
-              Divider(
-                height: 50,
-                thickness: 10,
-                color: Colors.green,
+    return Scaffold(
+      body: Container(
+        foregroundDecoration: BoxDecoration(
+          border: Border.all(
+            width: 5,
+            color: Colors.black,
+          ),
+        ),
+        child: Center(
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SingleChildScrollView(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      HeaderWidget(title: 'Personal'),
+                      Header(title: 'Name'),
+                      CajaName(),
+                      Header(title: 'Date of Birth'),
+                      ComboBox(),
+                      ComboBoxD(),
+                      ComboBoxY(),
+                      Header(title: 'What is your favorite animal?'),
+                      Row(
+                        children: <Widget>[
+                          HeaderButton(title: 'Lion'),
+                          HeaderButton(title: 'Tiger'),
+                          HeaderButton(title: 'Bear'),
+                          HeaderButton(title: 'Bull'),
+                          HeaderButton(title: 'Serval'),
+                        ],
+                      ),
+                      HeaderWidget(title: 'Account'),
+                      Header(title: 'Email'),
+                      CajaEmail(),
+                      Header(title: 'Password'),
+                      CajaPassword(),
+                      Header(title: 'Verify Password'),
+                      CajaVeriPassword(),
+                      HeaderWidget(title: 'Contact'),
+                      Header(title: 'Address'),
+                      CajaAddress(),
+                      Header(title: 'City'),
+                      CajaCity(),
+                      Header(title: 'State'),
+                      ComboBoxW(),
+                      Header(title: 'Phone'),
+                      CajaPhone(),
+                      Divider(
+                        height: 50,
+                        thickness: 10,
+                        color: Colors.green,
+                      ),
+                      Header(title: 'Do'),
+                    ]),
               ),
-              HeaderWidget(title: 'Do'),
-            ]),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class HeaderButton extends StatelessWidget {
+  final String title;
+  final bool selected;
+
+  const HeaderButton({
+    Key key,
+    this.title,
+    this.selected = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        color: selected ? Colors.black : null,
+        border: Border.all(
+          color: Colors.grey,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 13),
+        child: Center(
+          child: Text(
+            title.toUpperCase(),
+            style: TextStyle(
+              color: selected ? Colors.red : Colors.black,
+            ),
           ),
         ),
       ),
@@ -93,7 +158,6 @@ class _ComboBoxState extends State<ComboBox> {
             ),
           ],
         ),
-        Text(_actual)
       ],
     );
   }
@@ -146,7 +210,6 @@ class _ComboBoxDState extends State<ComboBoxD> {
             ),
           ],
         ),
-        Text(_actual)
       ],
     );
   }
@@ -201,7 +264,6 @@ class _ComboBoxYState extends State<ComboBoxY> {
             ),
           ],
         ),
-        Text(_actual)
       ],
     );
   }
@@ -229,7 +291,6 @@ class _CajaPasswordState extends State<CajaPassword> {
     return TextField(
       obscureText: true,
       decoration: InputDecoration(
-          hintText: 'Password',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
       onChanged: (valor) {
         setState(() {});
@@ -249,7 +310,6 @@ class _CajaVeriPasswordState extends State<CajaVeriPassword> {
     return TextField(
       obscureText: true,
       decoration: InputDecoration(
-          hintText: 'Verify Password',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
       onChanged: (valor) {
         setState(() {});
@@ -290,7 +350,6 @@ class _CajaNameState extends State<CajaName> {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-          helperText: 'Name',
           labelText: 'John Doe',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
       onChanged: (valor) {
@@ -312,7 +371,6 @@ class _CajaAddress extends State<CajaAddress> {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-          helperText: 'Adress',
           labelText: '938 Jackson St.',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
       onChanged: (valor) {
@@ -335,7 +393,6 @@ class _CajaCity extends State<CajaCity> {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-          helperText: 'City',
           labelText: '938 Jackson St.',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
       onChanged: (valor) {
@@ -358,7 +415,6 @@ class _CajaPhone extends State<CajaPhone> {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-          helperText: 'Phone',
           labelText: '837.383.3678',
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
       onChanged: (valor) {
@@ -402,7 +458,6 @@ class _ComboBoxWState extends State<ComboBoxW> {
             ),
           ],
         ),
-        Text(_actual)
       ],
     );
   }
@@ -418,15 +473,3 @@ class _ComboBoxWState extends State<ComboBoxW> {
     return options;
   }
 }
-
-Widget fourButtonsSection = new Container(
-    child: new Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: <Widget>[
-    new Text("Lion", style: new TextStyle(fontSize: 16.0)),
-    new Text("Tiger", style: new TextStyle(fontSize: 16.0)),
-    new Text("Bear", style: new TextStyle(fontSize: 16.0)),
-    new Text("Bull", style: new TextStyle(fontSize: 16.0)),
-    new Text("Serval", style: new TextStyle(fontSize: 16.0)),
-  ],
-));
