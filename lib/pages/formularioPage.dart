@@ -1,41 +1,39 @@
 import 'package:flutter/material.dart';
 
+import 'header_widget.dart';
+
 class InputPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: SingleChildScrollView(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Personal'),
-            CajaName(),
-            ComboBox(),
-            ComboBoxD(),
-            ComboBoxY(),
-            Divider(
-              height: 100,
-              thickness: 1,
-            ),
-            CajaEmail(),
-            CajaPassword(),
-            CajaVeriPassword(),
-            Text('Contact'),
-            Divider(
-              height: 50,
-              thickness: 1,
-            ),
-            CajaAddress(),
-            CajaCity(),
-            ComboBoxW(),
-            CajaPhone(),
-            Divider(
-              height: 50,
-              thickness: 10,
-              color: Colors.green,
-            ),
-            Text('Do'),
-          ]),
+    return Center(
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(30.0),
+          child: SingleChildScrollView(
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              HeaderWidget(title: 'Personal'),
+              CajaName(),
+              ComboBox(),
+              ComboBoxD(),
+              ComboBoxY(),
+              HeaderWidget(title: 'Account'),
+              CajaEmail(),
+              CajaPassword(),
+              CajaVeriPassword(),
+              HeaderWidget(title: 'Contact'),
+              CajaAddress(),
+              CajaCity(),
+              ComboBoxW(),
+              CajaPhone(),
+              Divider(
+                height: 50,
+                thickness: 10,
+                color: Colors.green,
+              ),
+              HeaderWidget(title: 'Do'),
+            ]),
+          ),
         ),
       ),
     );
